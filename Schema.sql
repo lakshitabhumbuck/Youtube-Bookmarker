@@ -1,0 +1,17 @@
+CREATE DATABASE youtube_bookmarks;
+USE youtube_bookmarks;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  googleId VARCHAR(255) UNIQUE NOT NULL
+);
+
+CREATE TABLE bookmarks (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  userId INT NOT NULL,
+  videoId VARCHAR(255) NOT NULL,
+  time FLOAT NOT NULL,
+  desc TEXT,
+  FOREIGN KEY (userId) REFERENCES users(id)
+);
